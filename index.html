@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be Well Collaborative | Telehealth Mental Health Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage:       #7a9e87;
+      --sage-light: #a8c4b0;
+      --sage-pale:  #e8f0ea;
+      --cream:      #faf8f4;
+      --warm-white: #f5f2ec;
+      --stone:      #c8bfaf;
+      --ink:        #2c2c2c;
+      --ink-soft:   #5a5550;
+      --gold:       #c9a96e;
+      --radius:     14px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(250, 248, 244, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(200, 191, 175, 0.3);
+      transition: padding var(--transition);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--sage); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink-soft);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--sage); }
+
+    .nav-portal-btn {
+      background: var(--sage) !important;
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.1em !important;
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+
+    .nav-portal-btn:hover {
+      background: var(--sage-light) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(122, 158, 135, 0.18), transparent 70%);
+      top: -100px; right: -100px;
+    }
+
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201, 169, 110, 0.12), transparent 70%);
+      bottom: 100px; left: 50px;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 4.5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      max-width: 460px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--sage);
+      color: #fff;
+      padding: 15px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(122, 158, 135, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #6a8e77;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(122, 158, 135, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--ink-soft);
+      padding: 15px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+      border: 1px solid var(--stone);
+      transition: border-color var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--sage-pale) 0%, #d6e8dc 40%, #c8ddd0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* decorative botanical SVG illustration */
+    .hero-illustration {
+      width: 75%;
+      max-width: 420px;
+      opacity: 0.85;
+    }
+
+    .hero-stat-strip {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      background: var(--warm-white);
+      border-top: 1px solid rgba(200, 191, 175, 0.4);
+    }
+
+    .stat-item {
+      flex: 1;
+      max-width: 220px;
+      text-align: center;
+      padding: 32px 20px;
+      border-right: 1px solid rgba(200, 191, 175, 0.4);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--sage);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 110px 80px; }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+
+    h2 em { font-style: italic; color: var(--sage); }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 56px;
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--warm-white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      border: 1px solid rgba(200, 191, 175, 0.3);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage-light), var(--sage));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(122, 158, 135, 0.15);
+      border-color: var(--sage-light);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--sage-pale);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--sage); fill: none; stroke-width: 1.5; }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+
+    /* ─── APPROACH ─── */
+    #approach {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      padding: 110px 80px;
+    }
+
+    .approach-visual {
+      position: relative;
+    }
+
+    .approach-card-stack {
+      position: relative;
+      height: 460px;
+    }
+
+    .approach-card {
+      position: absolute;
+      background: var(--warm-white);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid rgba(200, 191, 175, 0.4);
+    }
+
+    .approach-card-main {
+      width: 80%;
+      top: 40px;
+      left: 0;
+      z-index: 2;
+      box-shadow: 0 20px 50px rgba(44,44,44,0.08);
+    }
+
+    .approach-card-secondary {
+      width: 70%;
+      bottom: 40px;
+      right: 0;
+      z-index: 1;
+      background: var(--sage-pale);
+      border-color: var(--sage-light);
+    }
+
+    .approach-card-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 10px;
+    }
+
+    .approach-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .approach-card p {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .pill-tag {
+      display: inline-block;
+      background: var(--sage-pale);
+      color: var(--sage);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-top: 14px;
+    }
+
+    .approach-list {
+      list-style: none;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .approach-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .approach-list-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--sage-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .approach-list-icon svg {
+      width: 13px; height: 13px;
+      stroke: var(--sage); fill: none; stroke-width: 2.5;
+    }
+
+    .approach-list-text strong {
+      display: block;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .approach-list-text span {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    /* ─── PORTAL BANNER ─── */
+    #portal {
+      background: linear-gradient(135deg, var(--sage) 0%, #6a9475 100%);
+      padding: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    #portal h2 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: 10px;
+    }
+
+    #portal p {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+
+    .btn-portal {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--sage);
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    .btn-portal:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn-portal svg { width: 16px; height: 16px; stroke: var(--sage); fill: none; stroke-width: 2; }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--warm-white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info h2 { margin-bottom: 16px; }
+
+    .contact-details {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .contact-detail-icon {
+      width: 38px; height: 38px;
+      background: var(--sage-pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-icon svg {
+      width: 17px; height: 17px;
+      stroke: var(--sage); fill: none; stroke-width: 1.8;
+    }
+
+    .contact-detail-text strong {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 2px;
+    }
+
+    .contact-detail-text span {
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+
+    /* ─── FORM ─── */
+    .contact-form {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 48px;
+      border: 1px solid rgba(200, 191, 175, 0.3);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px 18px;
+      background: var(--warm-white);
+      border: 1px solid rgba(200, 191, 175, 0.5);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--ink);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(122, 158, 135, 0.12);
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235a5550' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+    }
+
+    button[type="submit"] {
+      background: var(--sage);
+      color: #fff;
+      border: none;
+      padding: 15px 36px;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 16px rgba(122, 158, 135, 0.3);
+    }
+
+    button[type="submit"]:hover {
+      background: #6a8e77;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(122, 158, 135, 0.4);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.6);
+      padding: 56px 80px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 60px;
+    }
+
+    .footer-brand .nav-logo {
+      color: #fff;
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      max-width: 280px;
+    }
+
+    .footer-col h5 {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer-col ul li a:hover { color: var(--sage-light); }
+
+    .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    /* ─── FADE-IN ANIMATION ─── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    .fade-in-delay-5 { transition-delay: 0.5s; }
+
+    /* ─── HAMBURGER / MOBILE ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: var(--transition);
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .hero-content { padding: 60px 28px; }
+      .hero-stat-strip { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      #approach { grid-template-columns: 1fr; padding: 80px 28px; }
+      .approach-visual { display: none; }
+      section { padding: 80px 28px; }
+      #portal { flex-direction: column; padding: 60px 28px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 32px 24px; }
+      footer { grid-template-columns: 1fr; padding: 48px 28px; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Be <span>Well</span> Collaborative</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Our Approach</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://your-patient-portal-link.com" target="_blank" rel="noopener" class="nav-portal-btn">Patient Portal</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-bg-orb orb-1"></div>
+    <div class="hero-bg-orb orb-2"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow fade-in">Telehealth Mental Health Care</p>
+      <h1 class="fade-in fade-in-delay-1">
+        Collaborative Care<br>for <em>Mind</em> &amp;<br>Well-Being
+      </h1>
+      <p class="hero-tagline fade-in fade-in-delay-2">
+        Supporting your mental health with compassionate, evidence-based care—so you can feel like yourself again.
+      </p>
+      <div class="hero-actions fade-in fade-in-delay-3">
+        <a href="#contact" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          Request an Appointment
+        </a>
+        <a href="#services" class="btn-secondary">
+          Explore Our Services
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="hero-image-inner">
+        <!-- Botanical SVG Illustration -->
+        <svg class="hero-illustration" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stem -->
+          <path d="M200 450 C200 350 200 300 200 200" stroke="#7a9e87" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Left branch -->
+          <path d="M200 300 C170 280 140 270 110 265" stroke="#7a9e87" stroke-width="2" stroke-linecap="round"/>
+          <path d="M200 330 C168 310 148 295 128 278" stroke="#7a9e87" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Right branch -->
+          <path d="M200 300 C230 280 260 270 290 265" stroke="#7a9e87" stroke-width="2" stroke-linecap="round"/>
+          <path d="M200 330 C232 310 252 295 272 278" stroke="#7a9e87" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Left leaves -->
+          <ellipse cx="98" cy="258" rx="32" ry="16" fill="#a8c4b0" opacity="0.6" transform="rotate(-20 98 258)"/>
+          <ellipse cx="118" cy="270" rx="26" ry="12" fill="#7a9e87" opacity="0.4" transform="rotate(-30 118 270)"/>
+          <!-- Right leaves -->
+          <ellipse cx="302" cy="258" rx="32" ry="16" fill="#a8c4b0" opacity="0.6" transform="rotate(20 302 258)"/>
+          <ellipse cx="282" cy="270" rx="26" ry="12" fill="#7a9e87" opacity="0.4" transform="rotate(30 282 270)"/>
+          <!-- Top flower head -->
+          <circle cx="200" cy="175" r="42" fill="#e8f0ea" opacity="0.9"/>
+          <circle cx="200" cy="175" r="28" fill="#c8ddd0"/>
+          <circle cx="200" cy="175" r="14" fill="#7a9e87"/>
+          <!-- Petals -->
+          <ellipse cx="200" cy="128" rx="10" ry="20" fill="#a8c4b0" opacity="0.7"/>
+          <ellipse cx="200" cy="222" rx="10" ry="20" fill="#a8c4b0" opacity="0.7"/>
+          <ellipse cx="153" cy="175" rx="20" ry="10" fill="#a8c4b0" opacity="0.7"/>
+          <ellipse cx="247" cy="175" rx="20" ry="10" fill="#a8c4b0" opacity="0.7"/>
+          <ellipse cx="168" cy="141" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(-45 168 141)"/>
+          <ellipse cx="232" cy="141" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(45 232 141)"/>
+          <ellipse cx="168" cy="209" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(45 168 209)"/>
+          <ellipse cx="232" cy="209" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(-45 232 209)"/>
+          <!-- Small accent circles -->
+          <circle cx="130" cy="400" r="18" fill="#c9a96e" opacity="0.15"/>
+          <circle cx="280" cy="420" r="12" fill="#7a9e87" opacity="0.2"/>
+          <circle cx="310" cy="380" r="7" fill="#c9a96e" opacity="0.2"/>
+          <circle cx="88" cy="360" r="9" fill="#a8c4b0" opacity="0.25"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="hero-stat-strip">
+      <div class="stat-item fade-in fade-in-delay-1">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Telehealth Accessible</span>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-2">
+        <span class="stat-number">Evidence-</span>
+        <span class="stat-label">Based Care Methods</span>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-3">
+        <span class="stat-number">Whole-</span>
+        <span class="stat-label">Person Approach</span>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-4">
+        <span class="stat-number">Care</span>
+        <span class="stat-label">From Where You Are</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services">
+    <p class="section-label fade-in">What We Offer</p>
+    <h2 class="fade-in fade-in-delay-1">Care That <em>Meets You</em><br>Where You Are</h2>
+    <p class="section-intro fade-in fade-in-delay-2">We offer a range of telehealth mental health services, delivered with compassion and clinical expertise—from the comfort of your own space.</p>
+
+    <div class="services-grid">
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Individual Therapy</h3>
+        <p>One-on-one sessions tailored to your unique needs. We work collaboratively to help you navigate life's challenges and build lasting resilience.</p>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Medication Management</h3>
+        <p>Thoughtful psychiatric evaluations and ongoing medication oversight to support your overall mental wellness alongside therapy.</p>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Couples &amp; Family</h3>
+        <p>Strengthen relationships and improve communication patterns. Our family-centered care helps you grow together with understanding and purpose.</p>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <h3>Anxiety &amp; Depression</h3>
+        <p>Specialized support for mood and anxiety disorders using proven therapeutic approaches that help you reclaim your sense of self.</p>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+        </div>
+        <h3>Stress &amp; Burnout</h3>
+        <p>Practical tools and compassionate guidance to help you recover from burnout, reduce overwhelm, and rediscover balance in your daily life.</p>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Life Transitions</h3>
+        <p>Support through major changes—career shifts, grief, new chapters. We help you navigate uncertainty with clarity, courage, and grounded care.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── APPROACH ─── -->
+  <section id="approach">
+    <div class="approach-visual fade-in">
+      <div class="approach-card-stack">
+        <div class="approach-card approach-card-main">
+          <p class="approach-card-label">Our Philosophy</p>
+          <h4>You Are More Than Your Diagnosis</h4>
+          <p>We see the whole person—your history, your strengths, your goals. Care is never one-size-fits-all.</p>
+          <span class="pill-tag">Whole-person care</span>
+        </div>
+        <div class="approach-card approach-card-secondary">
+          <p class="approach-card-label">Evidence-Based</p>
+          <h4>Proven Methods, Personal Touch</h4>
+          <p>We combine the best of clinical research with genuine human connection.</p>
+          <span class="pill-tag">CBT · DBT · Mindfulness</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="approach-content">
+      <p class="section-label fade-in">Our Approach</p>
+      <h2 class="fade-in fade-in-delay-1">Compassionate &amp;<br><em>Evidence-Based</em></h2>
+      <p class="section-intro fade-in fade-in-delay-2">We believe that healing happens in relationship—with your provider, with yourself, and with the life you want to build. Our collaborative model puts you at the center of your care.</p>
+
+      <ul class="approach-list">
+        <li class="fade-in fade-in-delay-1">
+          <div class="approach-list-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="approach-list-text">
+            <strong>Personalized Treatment Plans</strong>
+            <span>Every care plan is built around your specific goals, preferences, and clinical needs.</span>
+          </div>
+        </li>
+        <li class="fade-in fade-in-delay-2">
+          <div class="approach-list-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="approach-list-text">
+            <strong>Accessible &amp; Flexible Scheduling</strong>
+            <span>Telehealth means care on your schedule, from any private space you choose.</span>
+          </div>
+        </li>
+        <li class="fade-in fade-in-delay-3">
+          <div class="approach-list-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="approach-list-text">
+            <strong>Confidential &amp; Safe</strong>
+            <span>Your privacy is paramount. All sessions are HIPAA-compliant and completely confidential.</span>
+          </div>
+        </li>
+        <li class="fade-in fade-in-delay-4">
+          <div class="approach-list-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="approach-list-text">
+            <strong>Collaborative &amp; Ongoing</strong>
+            <span>We're a partner in your journey—not just a provider. We grow and adapt alongside you.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ─── PORTAL BANNER ─── -->
+  <section id="portal">
+    <div>
+      <h2 class="fade-in">Access Your Patient Portal</h2>
+      <p class="fade-in fade-in-delay-1">Manage appointments, message your care team, view documents, and more—all in one secure, convenient place.</p>
+    </div>
+    <a href="https://your-patient-portal-link.com" target="_blank" rel="noopener" class="btn-portal fade-in fade-in-delay-2">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Go to Patient Portal
+    </a>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-label fade-in">Get in Touch</p>
+        <h2 class="fade-in fade-in-delay-1">We'd Love to<br><em>Hear From You</em></h2>
+        <p class="section-intro fade-in fade-in-delay-2" style="margin-bottom:0">Taking the first step is the hardest part. Reach out and let us know how we can support you—our team will respond promptly and with care.</p>
+
+        <div class="contact-details">
+          <div class="contact-detail-item fade-in fade-in-delay-1">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Phone</strong>
+              <span>(000) 000-0000</span>
+            </div>
+          </div>
+          <div class="contact-detail-item fade-in fade-in-delay-2">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Email</strong>
+              <span>hello@bewellcollaborative.com</span>
+            </div>
+          </div>
+          <div class="contact-detail-item fade-in fade-in-delay-3">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Hours</strong>
+              <span>Mon–Fri: 8am – 6pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM — uses FormSubmit.co -->
+      <div class="contact-form fade-in fade-in-delay-2">
+        <form action="https://formsubmit.co/YOUR_EMAIL@EXAMPLE.COM" method="POST">
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" value="New Inquiry — Be Well Collaborative" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="text" name="_honey" style="display:none" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first_name" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last_name" placeholder="Smith" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reason">Reason for Visit</label>
+            <select id="reason" name="reason_for_visit" required>
+              <option value="" disabled selected>Select a reason…</option>
+              <option value="Individual Therapy">Individual Therapy</option>
+              <option value="Anxiety or Depression">Anxiety or Depression</option>
+              <option value="Medication Management">Medication Management</option>
+              <option value="Couples or Family Therapy">Couples or Family Therapy</option>
+              <option value="Stress or Burnout">Stress or Burnout</option>
+              <option value="Life Transitions">Life Transitions</option>
+              <option value="Initial Consultation">Initial Consultation / Not Sure Yet</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="insurance">Insurance Provider (Optional)</label>
+            <input type="text" id="insurance" name="insurance_provider" placeholder="e.g. BlueCross, Aetna, Self-Pay" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Tell Us a Little More</label>
+            <textarea id="message" name="message" placeholder="Share anything you'd like us to know before we reach out…"></textarea>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit">
+              Send Message &nbsp;→
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Be <span>Well</span> Collaborative</a>
+      <p>Compassionate, evidence-based telehealth mental health care—supporting your journey back to yourself.</p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Individual Therapy</a></li>
+        <li><a href="#services">Medication Management</a></li>
+        <li><a href="#services">Couples &amp; Family</a></li>
+        <li><a href="#services">Anxiety &amp; Depression</a></li>
+        <li><a href="#services">Stress &amp; Burnout</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#approach">Our Approach</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="https://your-patient-portal-link.com" target="_blank" rel="noopener">Patient Portal</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">HIPAA Notice</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Be Well Collaborative. All rights reserved.</span>
+      <span>Telehealth services available where licensed.</span>
+    </div>
+  </footer>
+
+  <script>
+    // ─── FADE-IN ON SCROLL ───
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Trigger hero items immediately
+    document.querySelectorAll('#hero .fade-in').forEach(el => el.classList.add('visible'));
+
+    // ─── STICKY NAV SHADOW ───
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(44,44,44,0.07)' : 'none';
+    });
+  </script>
+</body>
+</html>
