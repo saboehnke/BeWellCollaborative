@@ -36,7 +36,6 @@
       overflow-x: hidden;
     }
 
-    /* ─── NOISE TEXTURE OVERLAY ─── */
     body::before {
       content: '';
       position: fixed;
@@ -47,7 +46,6 @@
       opacity: 0.4;
     }
 
-    /* ─── NAV ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -69,6 +67,8 @@
       letter-spacing: 0.02em;
       color: var(--ink);
       text-decoration: none;
+      position: relative;
+      z-index: 101;
     }
 
     .nav-logo span { color: var(--sage); }
@@ -106,7 +106,86 @@
       transform: translateY(-1px);
     }
 
-    /* ─── HERO ─── */
+    /* ─── MOBILE NAV DRAWER ─── */
+    .nav-links.open {
+      display: flex !important;
+      flex-direction: column;
+      position: fixed;
+      top: 65px; left: 0; right: 0;
+      margin: 0;
+      padding: 16px 0 24px;
+      list-style: none;
+      background: rgba(250, 248, 244, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(200, 191, 175, 0.4);
+      box-shadow: 0 8px 24px rgba(44,44,44,0.08);
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 0;
+      z-index: 99;
+    }
+
+    .nav-links.open li {
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid rgba(200, 191, 175, 0.3);
+    }
+
+    .nav-links.open li:first-child {
+      border-top: 1px solid rgba(200, 191, 175, 0.3);
+    }
+
+    .nav-links.open a {
+      display: block;
+      padding: 20px 0;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+    }
+
+    .nav-links.open .nav-portal-btn {
+      display: inline-flex !important;
+      margin: 28px auto 0;
+      font-size: 0.88rem !important;
+      padding: 14px 36px;
+      border-bottom: none !important;
+    }
+
+    .nav-links.open li:has(.nav-portal-btn) {
+      border: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      position: relative;
+      z-index: 101;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: var(--transition);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
     #hero {
       min-height: 100vh;
       display: grid;
@@ -250,7 +329,6 @@
       justify-content: center;
     }
 
-    /* decorative botanical SVG illustration */
     .hero-illustration {
       width: 75%;
       max-width: 420px;
@@ -293,7 +371,6 @@
       color: var(--ink-soft);
     }
 
-    /* ─── SECTION BASE ─── */
     section { padding: 110px 80px; }
 
     .section-label {
@@ -323,10 +400,7 @@
       margin-bottom: 56px;
     }
 
-    /* ─── SERVICES ─── */
-    #services {
-      background: var(--warm-white);
-    }
+    #services { background: var(--warm-white); }
 
     .services-grid {
       display: grid;
@@ -390,7 +464,6 @@
       line-height: 1.75;
     }
 
-    /* ─── APPROACH ─── */
     #approach {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -399,9 +472,7 @@
       padding: 110px 80px;
     }
 
-    .approach-visual {
-      position: relative;
-    }
+    .approach-visual { position: relative; }
 
     .approach-card-stack {
       position: relative;
@@ -510,7 +581,6 @@
       color: var(--ink-soft);
     }
 
-    /* ─── PORTAL BANNER ─── */
     #portal {
       background: linear-gradient(135deg, var(--sage) 0%, #6a9475 100%);
       padding: 80px;
@@ -557,10 +627,7 @@
 
     .btn-portal svg { width: 16px; height: 16px; stroke: var(--sage); fill: none; stroke-width: 2; }
 
-    /* ─── CONTACT ─── */
-    #contact {
-      background: var(--warm-white);
-    }
+    #contact { background: var(--warm-white); }
 
     .contact-grid {
       display: grid;
@@ -613,7 +680,6 @@
       color: var(--ink);
     }
 
-    /* ─── FORM ─── */
     .contact-form {
       background: var(--cream);
       border-radius: 20px;
@@ -700,7 +766,6 @@
       box-shadow: 0 8px 24px rgba(122, 158, 135, 0.4);
     }
 
-    /* ─── FOOTER ─── */
     footer {
       background: var(--ink);
       color: rgba(255,255,255,0.6);
@@ -758,7 +823,6 @@
       font-size: 0.8rem;
     }
 
-    /* ─── FADE-IN ANIMATION ─── */
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
@@ -775,25 +839,6 @@
     .fade-in-delay-3 { transition-delay: 0.3s; }
     .fade-in-delay-4 { transition-delay: 0.4s; }
     .fade-in-delay-5 { transition-delay: 0.5s; }
-
-    /* ─── HAMBURGER / MOBILE ─── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 1.5px;
-      background: var(--ink);
-      transition: var(--transition);
-    }
 
     @media (max-width: 900px) {
       nav { padding: 18px 28px; }
@@ -817,21 +862,19 @@
 </head>
 <body>
 
-  <!-- ─── NAV ─── -->
   <nav id="navbar">
     <a href="#" class="nav-logo">Be <span>Well</span> Collaborative</a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#approach">Our Approach</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="https://your-patient-portal-link.com" target="_blank" rel="noopener" class="nav-portal-btn">Patient Portal</a></li>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services" class="nav-close-link">Services</a></li>
+      <li><a href="#approach" class="nav-close-link">Our Approach</a></li>
+      <li><a href="#contact" class="nav-close-link">Contact</a></li>
+      <li><a href="https://your-patient-portal-link.com" target="_blank" rel="noopener" class="nav-portal-btn nav-close-link">Patient Portal</a></li>
     </ul>
-    <button class="hamburger" aria-label="Menu">
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <!-- ─── HERO ─── -->
   <section id="hero">
     <div class="hero-bg-orb orb-1"></div>
     <div class="hero-bg-orb orb-2"></div>
@@ -858,27 +901,19 @@
 
     <div class="hero-image">
       <div class="hero-image-inner">
-        <!-- Botanical SVG Illustration -->
         <svg class="hero-illustration" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Stem -->
           <path d="M200 450 C200 350 200 300 200 200" stroke="#7a9e87" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- Left branch -->
           <path d="M200 300 C170 280 140 270 110 265" stroke="#7a9e87" stroke-width="2" stroke-linecap="round"/>
           <path d="M200 330 C168 310 148 295 128 278" stroke="#7a9e87" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Right branch -->
           <path d="M200 300 C230 280 260 270 290 265" stroke="#7a9e87" stroke-width="2" stroke-linecap="round"/>
           <path d="M200 330 C232 310 252 295 272 278" stroke="#7a9e87" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Left leaves -->
           <ellipse cx="98" cy="258" rx="32" ry="16" fill="#a8c4b0" opacity="0.6" transform="rotate(-20 98 258)"/>
           <ellipse cx="118" cy="270" rx="26" ry="12" fill="#7a9e87" opacity="0.4" transform="rotate(-30 118 270)"/>
-          <!-- Right leaves -->
           <ellipse cx="302" cy="258" rx="32" ry="16" fill="#a8c4b0" opacity="0.6" transform="rotate(20 302 258)"/>
           <ellipse cx="282" cy="270" rx="26" ry="12" fill="#7a9e87" opacity="0.4" transform="rotate(30 282 270)"/>
-          <!-- Top flower head -->
           <circle cx="200" cy="175" r="42" fill="#e8f0ea" opacity="0.9"/>
           <circle cx="200" cy="175" r="28" fill="#c8ddd0"/>
           <circle cx="200" cy="175" r="14" fill="#7a9e87"/>
-          <!-- Petals -->
           <ellipse cx="200" cy="128" rx="10" ry="20" fill="#a8c4b0" opacity="0.7"/>
           <ellipse cx="200" cy="222" rx="10" ry="20" fill="#a8c4b0" opacity="0.7"/>
           <ellipse cx="153" cy="175" rx="20" ry="10" fill="#a8c4b0" opacity="0.7"/>
@@ -887,7 +922,6 @@
           <ellipse cx="232" cy="141" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(45 232 141)"/>
           <ellipse cx="168" cy="209" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(45 168 209)"/>
           <ellipse cx="232" cy="209" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(-45 232 209)"/>
-          <!-- Small accent circles -->
           <circle cx="130" cy="400" r="18" fill="#c9a96e" opacity="0.15"/>
           <circle cx="280" cy="420" r="12" fill="#7a9e87" opacity="0.2"/>
           <circle cx="310" cy="380" r="7" fill="#c9a96e" opacity="0.2"/>
@@ -916,7 +950,6 @@
     </div>
   </section>
 
-  <!-- ─── SERVICES ─── -->
   <section id="services">
     <p class="section-label fade-in">What We Offer</p>
     <h2 class="fade-in fade-in-delay-1">Care That <em>Meets You</em><br>Where You Are</h2>
@@ -930,7 +963,6 @@
         <h3>Individual Therapy</h3>
         <p>One-on-one sessions tailored to your unique needs. We work collaboratively to help you navigate life's challenges and build lasting resilience.</p>
       </div>
-
       <div class="service-card fade-in fade-in-delay-2">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -938,7 +970,6 @@
         <h3>Medication Management</h3>
         <p>Thoughtful psychiatric evaluations and ongoing medication oversight to support your overall mental wellness alongside therapy.</p>
       </div>
-
       <div class="service-card fade-in fade-in-delay-3">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
@@ -946,7 +977,6 @@
         <h3>Couples &amp; Family</h3>
         <p>Strengthen relationships and improve communication patterns. Our family-centered care helps you grow together with understanding and purpose.</p>
       </div>
-
       <div class="service-card fade-in fade-in-delay-1">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
@@ -954,7 +984,6 @@
         <h3>Anxiety &amp; Depression</h3>
         <p>Specialized support for mood and anxiety disorders using proven therapeutic approaches that help you reclaim your sense of self.</p>
       </div>
-
       <div class="service-card fade-in fade-in-delay-2">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
@@ -962,7 +991,6 @@
         <h3>Stress &amp; Burnout</h3>
         <p>Practical tools and compassionate guidance to help you recover from burnout, reduce overwhelm, and rediscover balance in your daily life.</p>
       </div>
-
       <div class="service-card fade-in fade-in-delay-3">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -973,7 +1001,6 @@
     </div>
   </section>
 
-  <!-- ─── APPROACH ─── -->
   <section id="approach">
     <div class="approach-visual fade-in">
       <div class="approach-card-stack">
@@ -999,36 +1026,28 @@
 
       <ul class="approach-list">
         <li class="fade-in fade-in-delay-1">
-          <div class="approach-list-icon">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
+          <div class="approach-list-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="approach-list-text">
             <strong>Personalized Treatment Plans</strong>
             <span>Every care plan is built around your specific goals, preferences, and clinical needs.</span>
           </div>
         </li>
         <li class="fade-in fade-in-delay-2">
-          <div class="approach-list-icon">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
+          <div class="approach-list-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="approach-list-text">
             <strong>Accessible &amp; Flexible Scheduling</strong>
             <span>Telehealth means care on your schedule, from any private space you choose.</span>
           </div>
         </li>
         <li class="fade-in fade-in-delay-3">
-          <div class="approach-list-icon">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
+          <div class="approach-list-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="approach-list-text">
             <strong>Confidential &amp; Safe</strong>
             <span>Your privacy is paramount. All sessions are HIPAA-compliant and completely confidential.</span>
           </div>
         </li>
         <li class="fade-in fade-in-delay-4">
-          <div class="approach-list-icon">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
+          <div class="approach-list-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="approach-list-text">
             <strong>Collaborative &amp; Ongoing</strong>
             <span>We're a partner in your journey—not just a provider. We grow and adapt alongside you.</span>
@@ -1038,7 +1057,6 @@
     </div>
   </section>
 
-  <!-- ─── PORTAL BANNER ─── -->
   <section id="portal">
     <div>
       <h2 class="fade-in">Access Your Patient Portal</h2>
@@ -1050,49 +1068,27 @@
     </a>
   </section>
 
-  <!-- ─── CONTACT ─── -->
   <section id="contact">
     <div class="contact-grid">
       <div class="contact-info">
         <p class="section-label fade-in">Get in Touch</p>
         <h2 class="fade-in fade-in-delay-1">We'd Love to<br><em>Hear From You</em></h2>
         <p class="section-intro fade-in fade-in-delay-2" style="margin-bottom:0">Taking the first step is the hardest part. Reach out and let us know how we can support you—our team will respond promptly and with care.</p>
-
         <div class="contact-details">
-          <div class="contact-detail-item fade-in fade-in-delay-1">
-            <div class="contact-detail-icon">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            </div>
-            <div class="contact-detail-text">
-              <strong>Phone</strong>
-              <span>(000) 000-0000</span>
-            </div>
-          </div>
           <div class="contact-detail-item fade-in fade-in-delay-2">
             <div class="contact-detail-icon">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div class="contact-detail-text">
               <strong>Email</strong>
-              <span>hello@bewellcollaborative.com</span>
-            </div>
-          </div>
-          <div class="contact-detail-item fade-in fade-in-delay-3">
-            <div class="contact-detail-icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div class="contact-detail-text">
-              <strong>Hours</strong>
-              <span>Mon–Fri: 8am – 6pm</span>
+              <span>info@bewellcollaborative.com</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- FORM — uses FormSubmit.co -->
       <div class="contact-form fade-in fade-in-delay-2">
-        <form action="https://formsubmit.co/YOUR_EMAIL@EXAMPLE.COM" method="POST">
-          <!-- FormSubmit config -->
+        <form action="https://formsubmit.co/info@bewellcollaborative.com" method="POST">
           <input type="hidden" name="_subject" value="New Inquiry — Be Well Collaborative" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
@@ -1108,7 +1104,6 @@
               <input type="text" id="last-name" name="last_name" placeholder="Smith" required />
             </div>
           </div>
-
           <div class="form-row">
             <div class="form-group">
               <label for="email">Email Address</label>
@@ -1119,7 +1114,6 @@
               <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" />
             </div>
           </div>
-
           <div class="form-group">
             <label for="reason">Reason for Visit</label>
             <select id="reason" name="reason_for_visit" required>
@@ -1134,34 +1128,27 @@
               <option value="Other">Other</option>
             </select>
           </div>
-
           <div class="form-group">
             <label for="insurance">Insurance Provider (Optional)</label>
             <input type="text" id="insurance" name="insurance_provider" placeholder="e.g. BlueCross, Aetna, Self-Pay" />
           </div>
-
           <div class="form-group">
             <label for="message">Tell Us a Little More</label>
             <textarea id="message" name="message" placeholder="Share anything you'd like us to know before we reach out…"></textarea>
           </div>
-
           <div class="form-submit">
-            <button type="submit">
-              Send Message &nbsp;→
-            </button>
+            <button type="submit">Send Message &nbsp;→</button>
           </div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ─── FOOTER ─── -->
   <footer>
     <div class="footer-brand">
       <a href="#" class="nav-logo">Be <span>Well</span> Collaborative</a>
       <p>Compassionate, evidence-based telehealth mental health care—supporting your journey back to yourself.</p>
     </div>
-
     <div class="footer-col">
       <h5>Services</h5>
       <ul>
@@ -1172,7 +1159,6 @@
         <li><a href="#services">Stress &amp; Burnout</a></li>
       </ul>
     </div>
-
     <div class="footer-col">
       <h5>Quick Links</h5>
       <ul>
@@ -1183,14 +1169,49 @@
         <li><a href="#">HIPAA Notice</a></li>
       </ul>
     </div>
-
     <div class="footer-bottom">
-      <span>© 2025 Be Well Collaborative. All rights reserved.</span>
+      <span>© 2026 Be Well Collaborative. All rights reserved.</span>
       <span>Telehealth services available where licensed.</span>
     </div>
   </footer>
 
   <script>
+    // ─── HAMBURGER TOGGLE ───
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    const navbar    = document.getElementById('navbar');
+
+    function openMenu() {
+      // Set drawer top to exact navbar bottom
+      const navH = navbar.getBoundingClientRect().height;
+      navLinks.style.top = navH + 'px';
+      navLinks.classList.add('open');
+      hamburger.classList.add('active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    // Close menu when a nav link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
+    });
+
     // ─── FADE-IN ON SCROLL ───
     const fadeEls = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
@@ -1203,8 +1224,6 @@
     }, { threshold: 0.12 });
 
     fadeEls.forEach(el => observer.observe(el));
-
-    // Trigger hero items immediately
     document.querySelectorAll('#hero .fade-in').forEach(el => el.classList.add('visible'));
 
     // ─── STICKY NAV SHADOW ───
