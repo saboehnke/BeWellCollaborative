@@ -417,6 +417,7 @@
       transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
       position: relative;
       overflow: hidden;
+      cursor: default;
     }
 
     .service-card::before {
@@ -459,10 +460,25 @@
       color: var(--ink);
     }
 
+    /* ─── HOVER-REVEAL CARD TEXT ─── */
     .service-card p {
       font-size: 0.9rem;
       color: var(--ink-soft);
       line-height: 1.75;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(8px);
+      transition:
+        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-card:hover p {
+      opacity: 1;
+      max-height: 200px;
+      transform: translateY(0);
     }
 
     #approach {
@@ -841,6 +857,27 @@
     .fade-in-delay-4 { transition-delay: 0.4s; }
     .fade-in-delay-5 { transition-delay: 0.5s; }
 
+    .service-card ul {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      padding-left: 1.2em;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(8px);
+      transition:
+        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-card:hover ul {
+      opacity: 1;
+      max-height: 600px; /* larger than your longest list */
+      transform: translateY(0);
+    }
+
     @media (max-width: 900px) {
       nav { padding: 18px 28px; }
       .nav-links { display: none; }
@@ -858,13 +895,26 @@
       .form-row { grid-template-columns: 1fr; }
       .contact-form { padding: 32px 24px; }
       footer { grid-template-columns: 1fr; padding: 48px 28px; gap: 32px; }
+
+      /* On touch devices, always show the text since hover doesn't exist */
+      .service-card p {
+        opacity: 1;
+        max-height: 200px;
+        transform: translateY(0);
+      }
+
+      .service-card ul {
+        opacity: 1;
+        max-height: 600px;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
 
   <nav id="navbar">
-    <a href="#" class="nav-logo">Be <span>Well</span> Collaborative</a>
+    <a href="#" class="nav-logo">Be <span><i>Well</i></span> Collaborative</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services" class="nav-close-link">Services</a></li>
       <li><a href="#approach" class="nav-close-link">Our Approach</a></li>
@@ -883,10 +933,10 @@
     <div class="hero-content">
       <p class="hero-eyebrow fade-in">Telehealth Mental Health Care</p>
       <h1 class="fade-in fade-in-delay-1">
-        Functional,<br>Collaborative Care<br>for <em>Mind</em> &amp;<br>Well-Being
+        A More<br><em>Complete</em><br> Approach to<br>Mental<br>Health
       </h1>
       <p class="hero-tagline fade-in fade-in-delay-2">
-        Supporting your mental health with compassionate, evidence-based care—so you can feel like yourself again.
+        Supporting your mental health using a personlized, integrative approach that connects mental health with whole-body wellness.
       </p>
       <div class="hero-actions fade-in fade-in-delay-3">
         <a href="#contact" class="btn-primary">
@@ -934,19 +984,17 @@
     <div class="hero-stat-strip">
       <div class="stat-item fade-in fade-in-delay-1">
         <span class="stat-number">100%</span>
-        <span class="stat-label">Telehealth Accessible</span>
+        <span class="stat-label">Telehealth</span>
       </div>
       <div class="stat-item fade-in fade-in-delay-2">
-        <span class="stat-number">Evidence-</span>
-        <span class="stat-label">Based Care Methods</span>
+        <span class="stat-number">Root-</span>
+        <span class="stat-label">Cause Approach</span>
       </div>
       <div class="stat-item fade-in fade-in-delay-3">
-        <span class="stat-number">Whole-</span>
-        <span class="stat-label">Person Approach</span>
+        <span class="stat-number">Personalized Care</span>
       </div>
       <div class="stat-item fade-in fade-in-delay-4">
-        <span class="stat-number">Care</span>
-        <span class="stat-label">From Where You Are</span>
+        <span class="stat-number">Mental Health & Metabolism</span>
       </div>
     </div>
   </section>
@@ -959,45 +1007,64 @@
     <div class="services-grid">
       <div class="service-card fade-in fade-in-delay-1">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 0 7 4.5v.5H6a3 3 0 0 0-3 3v1a3 3 0 0 0 1.5 2.6V13a4 4 0 0 0 4 4h.5v1.5a1.5 1.5 0 0 0 3 0V17h.5a4 4 0 0 0 4-4v-1.9A3 3 0 0 0 18 9V8a3 3 0 0 0-3-3h-1v-.5A2.5 2.5 0 0 0 11.5 2h-2z"/></svg>
         </div>
-        <h3>Individual Therapy</h3>
-        <p>One-on-one sessions tailored to your unique needs. We work collaboratively to help you navigate life's challenges and build lasting resilience.</p>
+        <h3>Personalized Mental Healthcare with a Functional Approach</h3>
+        <p><strong>What We Offer</strong></p>
+        <ul>
+          <li>Comprehensive Intake Assessment</li>
+          <li>Functional Lab Testing and Analysis</li>
+          <li>Integration of personalized nutrition, supplementation, and lifestyle strategies</li>
+          <li>Flexible care options, including one-time comprehensive evaluations and recommendations or ongoing management plans</li>
+        </ul>
+        <br>
+        <p><strong>What Sets Our Care Apart</strong></p>
+        <ul>
+          <li>Extended, unhurried appointments</li>
+          <li>Focus on underlying biological contributors</li>
+          <li>Thoughtful medication use when appropriate</li>
+          <li>Integration of lifestyle, functional, and supplement strategies</li>
+        </ul>
       </div>
+
       <div class="service-card fade-in fade-in-delay-2">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M10.5 20.5 3.5 13.5a5 5 0 0 1 7.07-7.07l7 7a5 5 0 0 1-7.07 7.07z"/><path d="M8.5 11.5 12 8"/></svg>
         </div>
         <h3>Medication Management</h3>
-        <p>Thoughtful psychiatric evaluations and ongoing medication oversight to support your overall mental wellness alongside therapy.</p>
+        <p>We provide thoughtful, personalized prescribing—when and if you need it.</p>
+        <p>Our services include psychiatric medication evaluation, prescribing, and ongoing management and monitoring for:</p>
+        <ul>
+          <li>Anxiety</li>
+          <li>Depression</li>
+          <li>OCD</li>
+          <li>ADHD (non-stimulant options)</li>
+        </ul>
       </div>
+
       <div class="service-card fade-in fade-in-delay-3">
         <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <h3>Couples &amp; Family</h3>
-        <p>Strengthen relationships and improve communication patterns. Our family-centered care helps you grow together with understanding and purpose.</p>
-      </div>
-      <div class="service-card fade-in fade-in-delay-1">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-        </div>
-        <h3>Anxiety &amp; Depression</h3>
-        <p>Specialized support for mood and anxiety disorders using proven therapeutic approaches that help you reclaim your sense of self.</p>
-      </div>
-      <div class="service-card fade-in fade-in-delay-2">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
-        </div>
-        <h3>Stress &amp; Burnout</h3>
-        <p>Practical tools and compassionate guidance to help you recover from burnout, reduce overwhelm, and rediscover balance in your daily life.</p>
-      </div>
-      <div class="service-card fade-in fade-in-delay-3">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <h3>Life Transitions</h3>
-        <p>Support through major changes—career shifts, grief, new chapters. We help you navigate uncertainty with clarity, courage, and grounded care.</p>
+        <h3>Weight &amp; Metabolic Health</h3>
+        <p>Mental health and metabolism—treated together.</p>
+        <p>Struggling with weight is often not just about willpower. We address the metabolic and mental health factors that impace weight, energy, and overall wellness.</p>
+        <br>
+        <p><strong>Services include:</strong></p>
+        <ul>
+          <li>GLP-1 evaluation and management</li>
+          <li>Peptide therapy</li>
+          <li>NAD+ support</li>
+          <li>Personalized assessment</li>
+          <li>Emotional eating & stress-related weight gain</li>
+        </ul>
+        <br>
+        <p><strong>Ideal for patients who:</strong></p>
+        <ul>
+          <li>Feel stuck despite dieting or exercise</li>
+          <li>Experience weight gain with anxiety, depression, or medications</li>
+          <li>Want medically guided, sustainable results</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1119,12 +1186,9 @@
             <label for="reason">Reason for Visit</label>
             <select id="reason" name="reason_for_visit" required>
               <option value="" disabled selected>Select a reason…</option>
-              <option value="Individual Therapy">Individual Therapy</option>
-              <option value="Anxiety or Depression">Anxiety or Depression</option>
+              <option value="Personalized Mental Healthcare with a Functional Approach">Personalized Mental Healthcare with a Functional Approach</option>
               <option value="Medication Management">Medication Management</option>
-              <option value="Couples or Family Therapy">Couples or Family Therapy</option>
-              <option value="Stress or Burnout">Stress or Burnout</option>
-              <option value="Life Transitions">Life Transitions</option>
+              <option value="Weight & Metabolic Health">Weight & Metabolic Health</option>
               <option value="Initial Consultation">Initial Consultation / Not Sure Yet</option>
               <option value="Other">Other</option>
             </select>
@@ -1183,7 +1247,6 @@
     const navbar    = document.getElementById('navbar');
 
     function openMenu() {
-      // Set drawer top to exact navbar bottom
       const navH = navbar.getBoundingClientRect().height;
       navLinks.style.top = navH + 'px';
       navLinks.classList.add('open');
@@ -1203,12 +1266,10 @@
       navLinks.classList.contains('open') ? closeMenu() : openMenu();
     });
 
-    // Close menu when a nav link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
 
-    // Close menu on Escape key
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
     });
