@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Be Well Collaborative | Telehealth Mental Health Care</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100' height='100' rx='22' fill='%23e8f0ea'/%3E%3C!-- stem --%3E%3Cpath d='M50 92 C50 70 50 62 50 44' stroke='%237a9e87' stroke-width='3' stroke-linecap='round'/%3E%3C!-- leaves --%3E%3Cpath d='M50 68 C42 63 34 61 26 60' stroke='%237a9e87' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M50 68 C58 63 66 61 74 60' stroke='%237a9e87' stroke-width='2' stroke-linecap='round'/%3E%3Cellipse cx='22' cy='57' rx='9' ry='4.5' fill='%23a8c4b0' opacity='0.7' transform='rotate(-20 22 57)'/%3E%3Cellipse cx='78' cy='57' rx='9' ry='4.5' fill='%23a8c4b0' opacity='0.7' transform='rotate(20 78 57)'/%3E%3C!-- flower outer ring --%3E%3Ccircle cx='50' cy='36' r='20' fill='%23e8f0ea' opacity='0.95'/%3E%3C!-- petals cardinal --%3E%3Cellipse cx='50' cy='18' rx='5.5' ry='11' fill='%23a8c4b0' opacity='0.75'/%3E%3Cellipse cx='50' cy='54' rx='5.5' ry='11' fill='%23a8c4b0' opacity='0.75'/%3E%3Cellipse cx='32' cy='36' rx='11' ry='5.5' fill='%23a8c4b0' opacity='0.75'/%3E%3Cellipse cx='68' cy='36' rx='11' ry='5.5' fill='%23a8c4b0' opacity='0.75'/%3E%3C!-- petals diagonal --%3E%3Cellipse cx='37' cy='21' rx='5.5' ry='11' fill='%23c8ddd0' opacity='0.65' transform='rotate(-45 37 21)'/%3E%3Cellipse cx='63' cy='21' rx='5.5' ry='11' fill='%23c8ddd0' opacity='0.65' transform='rotate(45 63 21)'/%3E%3Cellipse cx='37' cy='51' rx='5.5' ry='11' fill='%23c8ddd0' opacity='0.65' transform='rotate(45 37 51)'/%3E%3Cellipse cx='63' cy='51' rx='5.5' ry='11' fill='%23c8ddd0' opacity='0.65' transform='rotate(-45 63 51)'/%3E%3C!-- flower center --%3E%3Ccircle cx='50' cy='36' r='14' fill='%23c8ddd0'/%3E%3Ccircle cx='50' cy='36' r='7' fill='%237a9e87'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="img/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -70,6 +70,15 @@
       text-decoration: none;
       position: relative;
       z-index: 101;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
     }
 
     .nav-logo span { color: var(--sage); }
@@ -107,7 +116,6 @@
       transform: translateY(-1px);
     }
 
-    /* ─── MOBILE NAV DRAWER ─── */
     .nav-links.open {
       display: flex !important;
       flex-direction: column;
@@ -152,9 +160,7 @@
       border-bottom: none !important;
     }
 
-    .nav-links.open li:has(.nav-portal-btn) {
-      border: none;
-    }
+    .nav-links.open li:has(.nav-portal-btn) { border: none; }
 
     .hamburger {
       display: none;
@@ -176,16 +182,9 @@
       transition: var(--transition);
     }
 
-    .hamburger.active span:nth-child(1) {
-      transform: translateY(6.5px) rotate(45deg);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: translateY(-6.5px) rotate(-45deg);
-    }
+    .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
     #hero {
       min-height: 100vh;
@@ -253,10 +252,7 @@
       margin-bottom: 28px;
     }
 
-    h1 em {
-      font-style: italic;
-      color: var(--sage);
-    }
+    h1 em { font-style: italic; color: var(--sage); }
 
     .hero-tagline {
       font-size: 1rem;
@@ -330,10 +326,11 @@
       justify-content: center;
     }
 
-    .hero-illustration {
-      width: 75%;
-      max-width: 420px;
-      opacity: 0.85;
+    .hero-logo-display {
+      width: 60%;
+      max-width: 340px;
+      opacity: 0.92;
+      filter: drop-shadow(0 20px 60px rgba(122,158,135,0.3));
     }
 
     .hero-stat-strip {
@@ -460,7 +457,6 @@
       color: var(--ink);
     }
 
-    /* ─── HOVER-REVEAL CARD TEXT ─── */
     .service-card p {
       font-size: 0.9rem;
       color: var(--ink-soft);
@@ -478,6 +474,27 @@
     .service-card:hover p {
       opacity: 1;
       max-height: 200px;
+      transform: translateY(0);
+    }
+
+    .service-card ul {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      padding-left: 1.2em;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(8px);
+      transition:
+        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-card:hover ul {
+      opacity: 1;
+      max-height: 600px;
       transform: translateY(0);
     }
 
@@ -506,7 +523,7 @@
 
     .approach-card-main {
       width: 80%;
-      top: 40px;
+      top: 10px;
       left: 0;
       z-index: 2;
       box-shadow: 0 20px 50px rgba(44,44,44,0.08);
@@ -514,7 +531,7 @@
 
     .approach-card-secondary {
       width: 70%;
-      bottom: 40px;
+      bottom: 10px;
       right: 0;
       z-index: 1;
       background: var(--sage-pale);
@@ -580,10 +597,7 @@
       margin-top: 2px;
     }
 
-    .approach-list-icon svg {
-      width: 13px; height: 13px;
-      stroke: var(--sage); fill: none; stroke-width: 2.5;
-    }
+    .approach-list-icon svg { width: 13px; height: 13px; stroke: var(--sage); fill: none; stroke-width: 2.5; }
 
     .approach-list-text strong {
       display: block;
@@ -593,11 +607,66 @@
       margin-bottom: 2px;
     }
 
-    .approach-list-text span {
-      font-size: 0.85rem;
-      color: var(--ink-soft);
+    .approach-list-text span { font-size: 0.85rem; color: var(--ink-soft); }
+
+    /* ABOUT */
+    #about { background: var(--cream); padding: 110px 80px; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 56px;
     }
 
+    .about-card {
+      background: var(--warm-white);
+      border-radius: 20px;
+      padding: 48px 44px;
+      border: 1px solid rgba(200, 191, 175, 0.35);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .about-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage-light), var(--sage));
+    }
+
+    .about-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(122, 158, 135, 0.12);
+    }
+
+    .about-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .about-card-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(200, 191, 175, 0.4);
+    }
+
+    .about-card-bio {
+      font-size: 0.93rem;
+      color: var(--ink-soft);
+      line-height: 1.85;
+    }
+
+    /* PORTAL */
     #portal {
       background: linear-gradient(135deg, var(--sage) 0%, #6a9475 100%);
       padding: 80px;
@@ -607,17 +676,8 @@
       gap: 40px;
     }
 
-    #portal h2 {
-      color: #fff;
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      margin-bottom: 10px;
-    }
-
-    #portal p {
-      color: rgba(255,255,255,0.8);
-      font-size: 0.95rem;
-      max-width: 520px;
-    }
+    #portal h2 { color: #fff; font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 10px; }
+    #portal p { color: rgba(255,255,255,0.8); font-size: 0.95rem; max-width: 520px; }
 
     .btn-portal {
       display: inline-flex;
@@ -637,13 +697,10 @@
       flex-shrink: 0;
     }
 
-    .btn-portal:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
+    .btn-portal:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     .btn-portal svg { width: 16px; height: 16px; stroke: var(--sage); fill: none; stroke-width: 2; }
 
+    /* CONTACT */
     #contact { background: var(--warm-white); }
 
     .contact-grid {
@@ -655,33 +712,19 @@
 
     .contact-info h2 { margin-bottom: 16px; }
 
-    .contact-details {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+    .contact-details { margin-top: 40px; display: flex; flex-direction: column; gap: 24px; }
 
-    .contact-detail-item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
+    .contact-detail-item { display: flex; gap: 14px; align-items: flex-start; }
 
     .contact-detail-icon {
       width: 38px; height: 38px;
       background: var(--sage-pale);
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
 
-    .contact-detail-icon svg {
-      width: 17px; height: 17px;
-      stroke: var(--sage); fill: none; stroke-width: 1.8;
-    }
+    .contact-detail-icon svg { width: 17px; height: 17px; stroke: var(--sage); fill: none; stroke-width: 1.8; }
 
     .contact-detail-text strong {
       display: block;
@@ -692,10 +735,7 @@
       margin-bottom: 2px;
     }
 
-    .contact-detail-text span {
-      font-size: 0.92rem;
-      color: var(--ink);
-    }
+    .contact-detail-text span { font-size: 0.92rem; color: var(--ink); }
 
     .contact-form {
       background: var(--cream);
@@ -704,19 +744,9 @@
       border: 1px solid rgba(200, 191, 175, 0.3);
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
     .form-group.full { grid-column: 1 / -1; }
 
     label {
@@ -756,11 +786,7 @@
 
     textarea { resize: vertical; min-height: 120px; }
 
-    .form-submit {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 8px;
-    }
+    .form-submit { display: flex; justify-content: flex-end; margin-top: 8px; }
 
     button[type="submit"] {
       background: var(--sage);
@@ -783,6 +809,7 @@
       box-shadow: 0 8px 24px rgba(122, 158, 135, 0.4);
     }
 
+    /* FOOTER */
     footer {
       background: var(--ink);
       color: rgba(255,255,255,0.6);
@@ -795,9 +822,11 @@
     .footer-brand .nav-logo {
       color: #fff;
       font-size: 1.3rem;
-      display: block;
+      display: inline-flex;
       margin-bottom: 16px;
     }
+
+    .footer-brand .nav-logo img { width: 30px; height: 30px; }
 
     .footer-brand p {
       font-size: 0.85rem;
@@ -814,12 +843,7 @@
       margin-bottom: 20px;
     }
 
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
     .footer-col ul li a {
       font-size: 0.88rem;
@@ -840,42 +864,25 @@
       font-size: 0.8rem;
     }
 
+    /* ANIMATIONS */
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: none;
-    }
-
+    .fade-in.visible { opacity: 1; transform: none; }
     .fade-in-delay-1 { transition-delay: 0.1s; }
     .fade-in-delay-2 { transition-delay: 0.2s; }
     .fade-in-delay-3 { transition-delay: 0.3s; }
     .fade-in-delay-4 { transition-delay: 0.4s; }
     .fade-in-delay-5 { transition-delay: 0.5s; }
 
-    .service-card ul {
-      font-size: 0.9rem;
-      color: var(--ink-soft);
-      line-height: 1.75;
-      padding-left: 1.2em;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transform: translateY(8px);
-      transition:
-        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-        max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .service-card:hover ul {
-      opacity: 1;
-      max-height: 600px; /* larger than your longest list */
-      transform: translateY(0);
+    /* Mid-size screens: fix approach card overlap */
+    @media (max-width: 1200px) and (min-width: 901px) {
+      .approach-card-stack { height: auto; min-height: 0; }
+      .approach-card { position: relative; width: 100% !important; top: auto !important; bottom: auto !important; left: auto !important; right: auto !important; }
+      .approach-card-main { margin-bottom: 16px; box-shadow: 0 8px 24px rgba(44,44,44,0.08); }
     }
 
     @media (max-width: 900px) {
@@ -890,33 +897,29 @@
       #approach { grid-template-columns: 1fr; padding: 80px 28px; }
       .approach-visual { display: none; }
       section { padding: 80px 28px; }
+      #about { padding: 80px 28px; }
+      .about-grid { grid-template-columns: 1fr; }
       #portal { flex-direction: column; padding: 60px 28px; }
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; }
       .contact-form { padding: 32px 24px; }
       footer { grid-template-columns: 1fr; padding: 48px 28px; gap: 32px; }
 
-      /* On touch devices, always show the text since hover doesn't exist */
-      .service-card p {
-        opacity: 1;
-        max-height: 200px;
-        transform: translateY(0);
-      }
-
-      .service-card ul {
-        opacity: 1;
-        max-height: 600px;
-        transform: translateY(0);
-      }
+      .service-card p { opacity: 1; max-height: 200px; transform: translateY(0); }
+      .service-card ul { opacity: 1; max-height: 600px; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
   <nav id="navbar">
-    <a href="#" class="nav-logo">Be <span><i>Well</i></span> Collaborative</a>
+    <a href="#" class="nav-logo">
+      <img src="img/logo.png" alt="Be Well Collaborative Logo" />
+      Be<span><i>Well</i></span>Collaborative
+    </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services" class="nav-close-link">Services</a></li>
+      <li><a href="#about" class="nav-close-link">About Us</a></li>
       <li><a href="#approach" class="nav-close-link">Our Approach</a></li>
       <li><a href="#contact" class="nav-close-link">Contact</a></li>
       <li><a href="https://www.optimantra.com/optimus/om/patient/login" target="_blank" rel="noopener" class="nav-portal-btn nav-close-link">Patient Portal</a></li>
@@ -932,12 +935,8 @@
 
     <div class="hero-content">
       <p class="hero-eyebrow fade-in">Telehealth Mental Health Care</p>
-      <h1 class="fade-in fade-in-delay-1">
-        A More<br><em>Complete</em><br> Approach to<br>Mental<br>Health
-      </h1>
-      <p class="hero-tagline fade-in fade-in-delay-2">
-        Supporting your mental health using a personlized, integrative approach that connects mental health with whole-body wellness.
-      </p>
+      <h1 class="fade-in fade-in-delay-1">A More<br><em>Complete</em><br>Approach to<br>Mental<br>Health</h1>
+      <p class="hero-tagline fade-in fade-in-delay-2">Supporting your mental health using a personalized, integrative approach that connects mental health with whole-body wellness.</p>
       <div class="hero-actions fade-in fade-in-delay-3">
         <a href="#contact" class="btn-primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
@@ -952,50 +951,15 @@
 
     <div class="hero-image">
       <div class="hero-image-inner">
-        <svg class="hero-illustration" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M200 450 C200 350 200 300 200 200" stroke="#7a9e87" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M200 300 C170 280 140 270 110 265" stroke="#7a9e87" stroke-width="2" stroke-linecap="round"/>
-          <path d="M200 330 C168 310 148 295 128 278" stroke="#7a9e87" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M200 300 C230 280 260 270 290 265" stroke="#7a9e87" stroke-width="2" stroke-linecap="round"/>
-          <path d="M200 330 C232 310 252 295 272 278" stroke="#7a9e87" stroke-width="1.5" stroke-linecap="round"/>
-          <ellipse cx="98" cy="258" rx="32" ry="16" fill="#a8c4b0" opacity="0.6" transform="rotate(-20 98 258)"/>
-          <ellipse cx="118" cy="270" rx="26" ry="12" fill="#7a9e87" opacity="0.4" transform="rotate(-30 118 270)"/>
-          <ellipse cx="302" cy="258" rx="32" ry="16" fill="#a8c4b0" opacity="0.6" transform="rotate(20 302 258)"/>
-          <ellipse cx="282" cy="270" rx="26" ry="12" fill="#7a9e87" opacity="0.4" transform="rotate(30 282 270)"/>
-          <circle cx="200" cy="175" r="42" fill="#e8f0ea" opacity="0.9"/>
-          <circle cx="200" cy="175" r="28" fill="#c8ddd0"/>
-          <circle cx="200" cy="175" r="14" fill="#7a9e87"/>
-          <ellipse cx="200" cy="128" rx="10" ry="20" fill="#a8c4b0" opacity="0.7"/>
-          <ellipse cx="200" cy="222" rx="10" ry="20" fill="#a8c4b0" opacity="0.7"/>
-          <ellipse cx="153" cy="175" rx="20" ry="10" fill="#a8c4b0" opacity="0.7"/>
-          <ellipse cx="247" cy="175" rx="20" ry="10" fill="#a8c4b0" opacity="0.7"/>
-          <ellipse cx="168" cy="141" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(-45 168 141)"/>
-          <ellipse cx="232" cy="141" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(45 232 141)"/>
-          <ellipse cx="168" cy="209" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(45 168 209)"/>
-          <ellipse cx="232" cy="209" rx="10" ry="20" fill="#c8ddd0" opacity="0.6" transform="rotate(-45 232 209)"/>
-          <circle cx="130" cy="400" r="18" fill="#c9a96e" opacity="0.15"/>
-          <circle cx="280" cy="420" r="12" fill="#7a9e87" opacity="0.2"/>
-          <circle cx="310" cy="380" r="7" fill="#c9a96e" opacity="0.2"/>
-          <circle cx="88" cy="360" r="9" fill="#a8c4b0" opacity="0.25"/>
-        </svg>
+        <img src="img/logo.png" alt="Be Well Collaborative" class="hero-logo-display" />
       </div>
     </div>
 
     <div class="hero-stat-strip">
-      <div class="stat-item fade-in fade-in-delay-1">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Telehealth</span>
-      </div>
-      <div class="stat-item fade-in fade-in-delay-2">
-        <span class="stat-number">Root-</span>
-        <span class="stat-label">Cause Approach</span>
-      </div>
-      <div class="stat-item fade-in fade-in-delay-3">
-        <span class="stat-number">Personalized Care</span>
-      </div>
-      <div class="stat-item fade-in fade-in-delay-4">
-        <span class="stat-number">Mental Health & Metabolism</span>
-      </div>
+      <div class="stat-item fade-in fade-in-delay-1"><span class="stat-number">100%</span><span class="stat-label">Telehealth</span></div>
+      <div class="stat-item fade-in fade-in-delay-2"><span class="stat-number">Root-</span><span class="stat-label">Cause Approach</span></div>
+      <div class="stat-item fade-in fade-in-delay-3"><span class="stat-number">Personalized Care</span></div>
+      <div class="stat-item fade-in fade-in-delay-4"><span class="stat-number">Mental Health &amp; Metabolism</span></div>
     </div>
   </section>
 
@@ -1048,23 +1012,38 @@
         </div>
         <h3>Weight &amp; Metabolic Health</h3>
         <p>Mental health and metabolism—treated together.</p>
-        <p>Struggling with weight is often not just about willpower. We address the metabolic and mental health factors that impace weight, energy, and overall wellness.</p>
-        <br>
+        <p>Struggling with weight is often not just about willpower. We address the metabolic and mental health factors that impacts weight, energy, and overall wellness.</p>
         <p><strong>Services include:</strong></p>
         <ul>
           <li>GLP-1 evaluation and management</li>
           <li>Peptide therapy</li>
           <li>NAD+ support</li>
           <li>Personalized assessment</li>
-          <li>Emotional eating & stress-related weight gain</li>
+          <li>Emotional eating &amp; stress-related weight gain</li>
         </ul>
-        <br>
         <p><strong>Ideal for patients who:</strong></p>
         <ul>
           <li>Feel stuck despite dieting or exercise</li>
           <li>Experience weight gain with anxiety, depression, or medications</li>
           <li>Want medically guided, sustainable results</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="section-label fade-in">Meet Our Team</p>
+    <h2 class="fade-in fade-in-delay-1">The People Behind<br><em>Your Care</em></h2>
+    <div class="about-grid">
+      <div class="about-card fade-in fade-in-delay-2">
+        <p class="about-card-name">Elizabeth Harbison</p>
+        <p class="about-card-title">FNP-C, PMHNP-BC</p>
+        <p class="about-card-bio">Elizabeth is a dual-certified nurse practitioner with over a decade of experience as a Family Nurse Practitioner, where she developed a strong foundation in both physical and mental health care. She has since expanded her expertise through advanced training and practice as a Psychiatric Mental Health Nurse Practitioner, allowing her to deliver comprehensive, whole-person care. Elizabeth is passionate about helping individuals achieve lasting balance and well-being through a collaborative, evidence-based approach.</p>
+      </div>
+      <div class="about-card fade-in fade-in-delay-3">
+        <p class="about-card-name">Mandie Bagwell</p>
+        <p class="about-card-title">FNP-BC, PMHNP-BC</p>
+        <p class="about-card-bio">Mandie is a dual-certified nurse practitioner who began her career in 2009. With a strong clinical foundation in both family and psychiatric care, she is passionate about helping individuals move beyond surface-level symptoms to uncover and address the root causes of mental health challenges. Mandie is dedicated to guiding her clients toward meaningful, lasting wellness so they can become the healthiest, most authentic version of themselves.</p>
       </div>
     </div>
   </section>
@@ -1089,37 +1068,24 @@
 
     <div class="approach-content">
       <p class="section-label fade-in">Our Approach</p>
-      <h2 class="fade-in fade-in-delay-1">Compassionate &amp;<br><em>Evidence-Based</em></h2>
+      <h2 class="fade-in fade-in-delay-1">Care That Looks<br><em>Beyond Symptoms</em></h2>
       <p class="section-intro fade-in fade-in-delay-2">We believe that healing happens in relationship—with your provider, with yourself, and with the life you want to build. Our collaborative model puts you at the center of your care.</p>
-
       <ul class="approach-list">
         <li class="fade-in fade-in-delay-1">
           <div class="approach-list-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="approach-list-text">
-            <strong>Personalized Treatment Plans</strong>
-            <span>Every care plan is built around your specific goals, preferences, and clinical needs.</span>
-          </div>
+          <div class="approach-list-text"><strong>Personalized Treatment Plans</strong><span>Every care plan is built around your specific goals, preferences, and clinical needs.</span></div>
         </li>
         <li class="fade-in fade-in-delay-2">
           <div class="approach-list-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="approach-list-text">
-            <strong>Accessible &amp; Flexible Scheduling</strong>
-            <span>Telehealth means care on your schedule, from any private space you choose.</span>
-          </div>
+          <div class="approach-list-text"><strong>Accessible &amp; Flexible Scheduling</strong><span>Telehealth means care on your schedule, from any private space you choose.</span></div>
         </li>
         <li class="fade-in fade-in-delay-3">
           <div class="approach-list-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="approach-list-text">
-            <strong>Confidential &amp; Safe</strong>
-            <span>Your privacy is paramount. All sessions are HIPAA-compliant and completely confidential.</span>
-          </div>
+          <div class="approach-list-text"><strong>Confidential &amp; Safe</strong><span>Your privacy is paramount. All sessions are HIPAA-compliant and completely confidential.</span></div>
         </li>
         <li class="fade-in fade-in-delay-4">
           <div class="approach-list-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="approach-list-text">
-            <strong>Collaborative &amp; Ongoing</strong>
-            <span>We're a partner in your journey—not just a provider. We grow and adapt alongside you.</span>
-          </div>
+          <div class="approach-list-text"><strong>Collaborative &amp; Ongoing</strong><span>We're a partner in your journey—not just a provider. We grow and adapt alongside you.</span></div>
         </li>
       </ul>
     </div>
@@ -1161,7 +1127,6 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="text" name="_honey" style="display:none" />
-
           <div class="form-row">
             <div class="form-group">
               <label for="first-name">First Name</label>
@@ -1188,7 +1153,7 @@
               <option value="" disabled selected>Select a reason…</option>
               <option value="Personalized Mental Healthcare with a Functional Approach">Personalized Mental Healthcare with a Functional Approach</option>
               <option value="Medication Management">Medication Management</option>
-              <option value="Weight & Metabolic Health">Weight & Metabolic Health</option>
+              <option value="Weight &amp; Metabolic Health">Weight &amp; Metabolic Health</option>
               <option value="Initial Consultation">Initial Consultation / Not Sure Yet</option>
               <option value="Other">Other</option>
             </select>
@@ -1202,7 +1167,7 @@
             <textarea id="message" name="message" placeholder="Share anything you'd like us to know before we reach out…"></textarea>
           </div>
           <div class="form-submit">
-            <button type="submit">Send Message &nbsp;→</button>
+            <button type="submit">Send Message &nbsp;&#8594;</button>
           </div>
         </form>
       </div>
@@ -1211,37 +1176,36 @@
 
   <footer>
     <div class="footer-brand">
-      <a href="#" class="nav-logo">Be <span>Well</span> Collaborative</a>
-      <p>Compassionate, evidence-based telehealth mental health care—supporting your journey back to yourself.</p>
+      <a href="#" class="nav-logo">
+        <img src="img/logo.png" alt="Be Well Collaborative Logo" />
+        Be<span><i>Well</i></span>Collaborative
+      </a>
+      <p>Supporting your mental health using a personalized, integrative approach that connects mental health with whole-body wellness.</p>
     </div>
     <div class="footer-col">
       <h5>Services</h5>
       <ul>
-        <li><a href="#services">Individual Therapy</a></li>
+        <li><a href="#services">Personalized Mental Healthcare</a></li>
         <li><a href="#services">Medication Management</a></li>
-        <li><a href="#services">Couples &amp; Family</a></li>
-        <li><a href="#services">Anxiety &amp; Depression</a></li>
-        <li><a href="#services">Stress &amp; Burnout</a></li>
+        <li><a href="#services">Weight &amp; Metabolic Health</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Quick Links</h5>
       <ul>
+        <li><a href="#about">About Us</a></li>
         <li><a href="#approach">Our Approach</a></li>
         <li><a href="#contact">Contact Us</a></li>
         <li><a href="https://www.optimantra.com/optimus/om/patient/login" target="_blank" rel="noopener">Patient Portal</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">HIPAA Notice</a></li>
       </ul>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Be Well Collaborative. All rights reserved.</span>
+      <span>&copy; 2026 Be Well Collaborative. All rights reserved.</span>
       <span>Telehealth services available where licensed.</span>
     </div>
   </footer>
 
   <script>
-    // ─── HAMBURGER TOGGLE ───
     const hamburger = document.getElementById('hamburger');
     const navLinks  = document.getElementById('navLinks');
     const navbar    = document.getElementById('navbar');
@@ -1274,7 +1238,6 @@
       if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
     });
 
-    // ─── FADE-IN ON SCROLL ───
     const fadeEls = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1288,7 +1251,6 @@
     fadeEls.forEach(el => observer.observe(el));
     document.querySelectorAll('#hero .fade-in').forEach(el => el.classList.add('visible'));
 
-    // ─── STICKY NAV SHADOW ───
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('navbar');
       nav.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(44,44,44,0.07)' : 'none';
