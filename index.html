@@ -510,7 +510,7 @@
 
     .approach-card-stack {
       position: relative;
-      height: 460px;
+      height: 800px;
     }
 
     .approach-card {
@@ -525,17 +525,28 @@
       width: 80%;
       top: 10px;
       left: 0;
-      z-index: 2;
+      z-index: 3;
       box-shadow: 0 20px 50px rgba(44,44,44,0.08);
     }
 
     .approach-card-secondary {
       width: 70%;
-      bottom: 10px;
+      top: 245px;
       right: 0;
-      z-index: 1;
+      z-index: 2;
       background: var(--sage-pale);
       border-color: var(--sage-light);
+      box-shadow: 0 20px 50px rgba(44,44,44,0.08);
+    }
+
+    .approach-card-tertiary {
+      width: 75%;
+      top: 440px;
+      left: 0;
+      z-index: 1;
+      background: #f0ebe3;
+      border-color: rgba(200, 191, 175, 0.5);
+      box-shadow: 0 20px 50px rgba(44,44,44,0.08);
     }
 
     .approach-card-label {
@@ -883,6 +894,7 @@
       .approach-card-stack { height: auto; min-height: 0; }
       .approach-card { position: relative; width: 100% !important; top: auto !important; bottom: auto !important; left: auto !important; right: auto !important; }
       .approach-card-main { margin-bottom: 16px; box-shadow: 0 8px 24px rgba(44,44,44,0.08); }
+      .approach-card-secondary { margin-bottom: 16px; }
     }
 
     @media (max-width: 900px) {
@@ -895,7 +907,20 @@
       .hero-stat-strip { display: none; }
       .services-grid { grid-template-columns: 1fr; }
       #approach { grid-template-columns: 1fr; padding: 80px 28px; }
-      .approach-visual { display: none; }
+      .approach-visual { display: block; }
+      .approach-card-stack {
+        height: auto;
+        min-height: 0;
+      }
+      .approach-card {
+        position: relative;
+        width: 100% !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin-bottom: 16px;
+      }
       section { padding: 80px 28px; }
       #about { padding: 80px 28px; }
       .about-grid { grid-template-columns: 1fr; }
@@ -1051,18 +1076,53 @@
   <section id="approach">
     <div class="approach-visual fade-in">
       <div class="approach-card-stack">
+
         <div class="approach-card approach-card-main">
           <p class="approach-card-label">Our Philosophy</p>
           <h4>You Are More Than Your Diagnosis</h4>
           <p>We see the whole person—your history, your strengths, your goals. Care is never one-size-fits-all.</p>
           <span class="pill-tag">Whole-person care</span>
         </div>
+
         <div class="approach-card approach-card-secondary">
           <p class="approach-card-label">Evidence-Based</p>
           <h4>Proven Methods, Personal Touch</h4>
           <p>We combine the best of clinical research with genuine human connection.</p>
-          <!-- <span class="pill-tag">CBT · DBT · Mindfulness</span> -->
         </div>
+
+        <div class="approach-card approach-card-tertiary">
+          <p class="approach-card-label">Root-Cause Focus</p>
+          <h4>At Be Well Collaborative, we don't just manage symptoms—we work to understand <em>why</em> they're happening.</h4>
+          <p>Mental health is deeply connected to:</p>
+          <ul style="list-style: none; padding: 0; margin: 12px 0 16px; display: flex; flex-direction: column; gap: 10px;">
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; min-width: 18px; background: rgba(122,158,135,0.18); border-radius: 50%; margin-top: 1px;">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#7a9e87" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Metabolism and blood sugar balance
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; min-width: 18px; background: rgba(122,158,135,0.18); border-radius: 50%; margin-top: 1px;">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#7a9e87" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Genetics, hormones, and inflammation
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; min-width: 18px; background: rgba(122,158,135,0.18); border-radius: 50%; margin-top: 1px;">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#7a9e87" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Sleep and sleep patterns
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; min-width: 18px; background: rgba(122,158,135,0.18); border-radius: 50%; margin-top: 1px;">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#7a9e87" stroke-width="2.8"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Nutrition and lifestyle
+            </li>
+          </ul>
+          <p style="border-top: 1px solid rgba(200,191,175,0.4); padding-top: 14px;">Our approach integrates these factors into a comprehensive, personalized plan—so you can experience meaningful, lasting improvement.</p>
+        </div>
+
       </div>
     </div>
 
