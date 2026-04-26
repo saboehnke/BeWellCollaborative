@@ -820,6 +820,78 @@
       box-shadow: 0 8px 24px rgba(122, 158, 135, 0.4);
     }
 
+    /* BOOKING CTA */
+    #booking {
+      background: linear-gradient(135deg, var(--sage-pale) 0%, #d6e8dc 100%);
+      text-align: center;
+      padding: 90px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    #booking .section-label { margin-bottom: 16px; }
+
+    #booking h2 {
+      max-width: 640px;
+      margin-bottom: 20px;
+    }
+
+    #booking p {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 580px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .btn-booking {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--sage);
+      color: #fff;
+      padding: 17px 42px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.07em;
+      font-weight: 400;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 24px rgba(122, 158, 135, 0.35);
+    }
+
+    .btn-booking:hover {
+      background: #6a8e77;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(122, 158, 135, 0.45);
+    }
+
+    .btn-booking svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+
+    /* DISCLAIMER */
+    .footer-disclaimer {
+      grid-column: 1 / -1;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.75;
+    }
+
+    .footer-disclaimer p { margin-bottom: 8px; }
+    .footer-disclaimer p:last-child { margin-bottom: 0; }
+
+    .footer-disclaimer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color var(--transition);
+    }
+
+    .footer-disclaimer a:hover { color: var(--sage-light); }
+
     /* FOOTER */
     footer {
       background: var(--ink);
@@ -928,6 +1000,7 @@
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; }
       .contact-form { padding: 32px 24px; }
+      #booking { padding: 60px 28px; }
       footer { grid-template-columns: 1fr; padding: 48px 28px; gap: 32px; }
 
       .service-card p { opacity: 1; max-height: 200px; transform: translateY(0); }
@@ -1162,6 +1235,16 @@
     </a>
   </section>
 
+  <section id="booking">
+    <p class="section-label fade-in">Book an Appointment</p>
+    <h2 class="fade-in fade-in-delay-1">Ready to Take the<br><em>Next Step?</em></h2>
+    <p class="fade-in fade-in-delay-2">Take the next step toward personalized, thoughtful care and explore a tailored approach to your mental health and overall well-being.</p>
+    <a href="https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=b2NwYnlCMnlMWldZUUI1d0oxNjRpdz09&lid=Njg3bHNscHM1c000SGNaQmVlNVFaZz09" target="_blank" rel="noopener" class="btn-booking fade-in fade-in-delay-3">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Book an Appointment Online
+    </a>
+  </section>
+
   <section id="contact">
     <div class="contact-grid">
       <div class="contact-info">
@@ -1262,6 +1345,14 @@
     <div class="footer-bottom">
       <span>&copy; 2026 Be Well Collaborative. All rights reserved.</span>
       <span>Telehealth services available where licensed.</span>
+    </div>
+    <div class="footer-disclaimer">
+      <p>The information on this website is for educational purposes only and does not constitute medical advice or establish a provider–patient relationship. Services are provided only after completion of intake, consent, and evaluation through our secure patient platform.</p>
+      <p>Do not submit personal health information through this website. For secure communication, use the patient portal.</p>
+      <p>Be Well Collaborative offers a combination of insurance-based and cash-pay services. Certain services, including functional psychiatry, supplements, and laboratory testing, may not be covered by insurance and may result in out-of-pocket costs.</p>
+      <p>Supplement recommendations are not evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent disease.</p>
+      <p>If you are experiencing an emergency, call 911 or go to the nearest emergency room.</p>
+      <p><a href="#">View our full Terms &amp; Disclaimers.</a></p>
     </div>
   </footer>
 
